@@ -1,0 +1,31 @@
+version: '2.0'
+
+volumes:
+  wordpress_vol:
+  mysql_vol:
+
+services:
+
+  wordpress:
+    container_name: wordpress
+    image: wordpress
+    volumes:
+      - wordpress_vol:/var/www/html
+    ports:
+      - 8080:80
+    environment:      
+      WORDPRESS_DB_HOST: banco_mysql
+      WORDPRESS_DB_USER: userwordpress
+      WORDPRESS_DB_PASSWORD: pwdwordpress
+      WORDPRESS_DB_NAME: db_wordpress
+
+  mysql:
+    container_name: banco_mysql
+    image: mysql:8.0
+    volumes:
+      - mysql_vol:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mysqlrootpwd
+      MYSQL_DATABASE: db_wordpress
+      MYSQL_USER: userwordpress
+      MYSQL_PASSWORD: pwdwordpress
