@@ -1,5 +1,8 @@
 version: '2.0'
 
+networks:
+  rede_wordpress:
+
 volumes:
   wordpress_vol:
   mysql_vol:
@@ -9,6 +12,8 @@ services:
   wordpress:
     container_name: wordpress
     image: wordpress
+    networks:
+      - rede_wordpress
     volumes:
       - wordpress_vol:/var/www/html
     ports:
@@ -22,6 +27,8 @@ services:
   mysql:
     container_name: banco_mysql
     image: mysql:8.0
+    networks:
+      - rede_wordpress
     volumes:
       - mysql_vol:/var/lib/mysql
     environment:
