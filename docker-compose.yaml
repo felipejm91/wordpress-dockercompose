@@ -10,7 +10,7 @@ volumes:
 services:
   wordpress:
     container_name: wordpress
-    image: wordpress:5.9.3
+    image: wordpress:6.1.1
     networks:
       - rede_wordpress
     volumes:
@@ -38,6 +38,7 @@ services:
     ports:
       - 8081:80
     environment:
-      PMA_ARBITRARY: mysql-service
+      PMA_ARBITRARY: banco_mysql
       PMA_HOST: banco_mysql
       PMA_PORT: 3306
+      UPLOAD_LIMIT: 10000
