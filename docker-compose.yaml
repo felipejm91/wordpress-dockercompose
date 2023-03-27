@@ -4,7 +4,6 @@ networks:
   rede_wordpress:
 
 volumes:
-  wordpress_vol:
   mysql_vol:
 
 services:
@@ -14,9 +13,12 @@ services:
     networks:
       - rede_wordpress
     volumes:
-      - wordpress_vol:/var/www/html
+      #fazer download dos arquivos wordpress em uma pasta
+      - path_to_files_wordpress:/var/www/html
     ports:
-      - 8080:80
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: banco_mysql
     env_file:
       - wordpress.env
 
@@ -41,4 +43,4 @@ services:
       PMA_ARBITRARY: banco_mysql
       PMA_HOST: banco_mysql
       PMA_PORT: 3306
-      UPLOAD_LIMIT: 10000
+      UPLOAD_LIMIT: 30000000 #delimita tamanho de arquivos que podem ser feito upload
