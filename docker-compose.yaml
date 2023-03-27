@@ -13,7 +13,7 @@ services:
     networks:
       - rede_wordpress
     volumes:
-      #fazer download dos arquivos wordpress em uma pasta
+      #Apontar para pasta vazia onde ficará arquivos wordpress ou então apontar para pasta que já contém arquivos de um site existente
       - path_to_files_wordpress:/var/www/html
     ports:
       - 80:80
