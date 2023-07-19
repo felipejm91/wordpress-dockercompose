@@ -28,7 +28,7 @@ services:
     networks:
       - rede_wordpress
     volumes:
-      - mysql_vol:/var/lib/mysql
+      - mysql_vol:/var/lib/mysql #Nome do volume do MySQL para armazenamento dos dados do banco de dados
     env_file:
       - mysql.env
 
@@ -43,4 +43,4 @@ services:
       PMA_ARBITRARY: banco_mysql
       PMA_HOST: banco_mysql
       PMA_PORT: 3306
-      UPLOAD_LIMIT: 30000000 #delimita tamanho de arquivos que podem ser feito upload
+      UPLOAD_LIMIT: 30000000 #delimita tamanho de arquivo que pode ser feito upload
